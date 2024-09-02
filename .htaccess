@@ -2,7 +2,13 @@
 	RewriteEngine On
 	RewriteBase /
 
-#.rewrite.htaccess
+# BEGIN APPS
+<IfModule mod_headers.c>
+	Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers, AppId, AEFW-USERS, AEFW-TOKEN, User, Token, Id, Kode, StLogin, Hash"
+	Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+	Header always set Access-Control-Allow-Origin "*"
+</IfModule>
+# END APPS
 	RewriteRule ^(login/?)$ index.php?/users/user/login [L,QSA]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
@@ -55,5 +61,4 @@ AddEncoding gzip .svgz
 	<FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js|gif|png|jpe?g|svg|svgz|ico|webp)$">
 		Header set Access-Control-Allow-Origin "*"
 	</FilesMatch>
-	Header set Access-Control-Allow-Origin "*"
 </IfModule>
