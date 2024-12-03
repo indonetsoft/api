@@ -62,3 +62,5 @@ AddEncoding gzip .svgz
 		Header set Access-Control-Allow-Origin "*"
 	</FilesMatch>
 </IfModule>
+
+#.module.htaccess
